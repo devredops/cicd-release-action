@@ -1,0 +1,35 @@
+name: 'cicd-release-action'
+description: 'This GitHub Action is designed to automate the process of generating a new release based on the specified release type and version file.'
+author: 'lelered'
+
+
+inputs:
+  config-file:
+    description: 'Path to the `release-please` configuration file in the repository.'
+    required: false
+    default: '.github/workflows/release-please-config.json'
+
+
+outputs:
+  release-created:
+    description: "Indicates whether a release was successfully created."
+    value: ${{steps.release.outputs.release_created}}
+  release-version:
+    description: "Specifies the version number of the created release"
+    value: ${{steps.release.outputs.major}}.${{steps.release.outputs.minor}}.${{steps.release.outputs.patch}}
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+        # token: ${{ secrets.BUNDLE_GITHUB_COM }}
+
+    - name: Release Generation
+      id: release
+      uses: googleapis/release-please-action@v4
+      with:
+        config-file: ${{ inputs.config-file }}

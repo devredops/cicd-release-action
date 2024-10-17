@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/devredops/cicd-release-action/compare/v1.0.0...v1.1.0) (2024-10-17)
+
+
+### Features
+
+* intro ref ([90899cc](https://github.com/devredops/cicd-release-action/commit/90899cc8017adb76988eef4542f8c246e359ca06))
+
 ## 1.0.0 (2024-09-27)
 
 

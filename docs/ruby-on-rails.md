@@ -57,7 +57,7 @@
             release-type: ruby
             version-file: config/application.rb
         -
-          uses: devredops/cicd-build-push-action-on-gcp@main
+          uses: devredops/cicd-build-push-on-gcp-action@main
           if: ${{ steps.release.outputs.release-created }}
           with:
             release-version: "${{ steps.release.outputs.release-version }}"

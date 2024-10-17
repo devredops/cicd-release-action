@@ -8,6 +8,10 @@ inputs:
     description: 'Path to the `release-please` configuration file in the repository.'
     required: false
     default: '.github/workflows/release-please-config.json'
+  ref:
+    description: "Branch or tag"
+    required: false
+    default: null
 
 
 outputs:
@@ -26,6 +30,7 @@ runs:
       uses: actions/checkout@v4
       with:
         submodules: true
+        ref: ${{ inputs.ref }}
         # token: ${{ secrets.BUNDLE_GITHUB_COM }}
 
     - name: Release Generation
